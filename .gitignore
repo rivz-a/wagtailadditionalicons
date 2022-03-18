@@ -1,7 +1,7 @@
-wagtailextraicons/templates
-!wagtailextraicons/templates/extraicons/.keep
-wagtailextraicons/icon_register.py
-wagtailextraicons.egg-info
+wagtailadditionalicons/templates
+!wagtailadditionalicons/templates/extraicons/.keep
+wagtailadditionalicons/icon_register.py
+wagtailadditionalicons.egg-info
 build/
 dist/
 __pycache__

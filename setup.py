@@ -7,21 +7,21 @@ from setuptools import find_packages, setup
 from setuptools.command.sdist import sdist as base_sdist
 from setuptools.command.bdist_egg import bdist_egg as base_bdist_egg
 
-from wagtailextraicons import __version__
+from wagtailadditionalicons import __version__
 
 
-url = 'https://github.com/octavenz/wagtailextraicons'
+url = 'https://github.com/rivz-a/wagtailadditionalicons'
 icon_src_dir = 'lib/icons'
 
 
 class IconsDocMixin:
     def build_icons_doc(self):
-        extraicons = os.listdir(icon_src_dir)
+        additionalicons = os.listdir(icon_src_dir)
 
         with open('docs/icons.md', 'w') as file:
             file.write('| Icon | Name |\n')
             file.write('| --- | --- |\n')
-            for icon_file in sorted(extraicons):
+            for icon_file in sorted(additionalicons):
                 icon_name = icon_file.split('.')[0]
                 icon_image_url = '{0}/blob/master/{1}/{2}'.format(url, icon_src_dir, icon_file)
                 file.write(
@@ -32,8 +32,8 @@ class IconsDocMixin:
 class IconRegisterMixin:
     icon_register = []
     icon_paths = []
-    icon_dest_dir = 'wagtailextraicons/templates/extraicons'
-    icon_register_path = 'wagtailextraicons/icon_register.py'
+    icon_dest_dir = 'wagtailadditionalicons/templates/additionalicons'
+    icon_register_path = 'wagtailadditionalicons/icon_register.py'
 
     def register_icons(self):
         self.icon_paths = glob.glob(f'{icon_src_dir}/*.svg')
@@ -44,8 +44,8 @@ class IconRegisterMixin:
         for icon_path in self.icon_paths:
             icon_file_name = os.path.basename(icon_path)
             icon_name = icon_file_name[0:-4]
-            dest_name = f'extraicons--{icon_name}'
-            dest_filename = f'extraicons--{icon_name}.svg'
+            dest_name = f'additionalicons--{icon_name}'
+            dest_filename = f'additionalicons--{icon_name}.svg'
 
             with open(icon_path) as fp:
                 symbol = self.convert_svg_to_symbol(fp, dest_name)
